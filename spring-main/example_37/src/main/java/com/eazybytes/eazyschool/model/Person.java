@@ -97,3 +97,11 @@ public class Book {
 
     // Constructors, getters, setters
 }
+
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    @Query("SELECT u FROM User u WHERE u.lastName = ?1 ORDER BY u.firstName ASC")
+    List<User> findByLastName(String lastName);
+}
+
+
